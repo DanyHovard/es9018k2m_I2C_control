@@ -1,0 +1,17 @@
+[Unit]
+Description=ES9018K2M DAC WebSocket Controller
+After=multi-user.target sound.target
+Requires=sound.target
+
+[Service]
+Type=simple
+User=volumio
+WorkingDirectory=/volumio/app/plugins/system_controller/i2s_dacs/scripts
+# Используем Python из venv
+ExecStart=/volumio/app/plugins/system_controller/i2s_dacs/scripts/venv/bin/python ES9018K2M_I2C_Volumio.py
+Restart=always
+RestartSec=2
+# PID файл необязателен, systemd сам управляет процессом
+
+[Install]
+WantedBy=multi-user.target
