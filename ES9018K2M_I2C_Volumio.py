@@ -60,14 +60,14 @@ class ES9018K2M:
         self._write(REG_VOL_L, att)
         self._write(REG_VOL_R, att)
         self.volume = vol
-        logging.info(f"Volume  ^f^r {vol}%")
+        logging.info(f"Volume set to {vol}% (Reg: {hex(att)})")
 
     def set_mute(self, mute):
         if mute == self.mute:
             return
         self._write(REG_MUTE, 0x83 if mute else 0x80)
         self.mute = mute
-        logging.info(f"Mute  ^f^r {mute}")
+        logging.info(f"Mute: {'ON' if mute else 'OFF'}")
 
 # =========================
 # WEBSOCKET HANDLERS
